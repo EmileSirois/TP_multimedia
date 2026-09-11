@@ -1,6 +1,7 @@
 int currentTime;
 int deltaTime;
 int previousTime;
+PVector gravity = new PVector(0, 0.01);
 
 Emitter emitter;
 
@@ -19,7 +20,7 @@ void draw() {
 }
 
 void update(int deltaTime) {
-  emitter.update(deltaTime);
+  emitter.update(gravity);
 }
 
 void display() {

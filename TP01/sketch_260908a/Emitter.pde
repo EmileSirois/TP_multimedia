@@ -13,14 +13,19 @@ class Emitter {
     particles = new ArrayList<Particle>();
   }
 
-  void update(int deltaTime) {
+  void update(PVector force) {
     if (millis() - lastParticleTime > particleRate && particles.size() < maxParticles) {
       lastParticleTime = millis();
       particles.add(new Particle(position));
     }
 
+    applyForce(force);
+  }
+  
+ void applyForce(PVector force) {
     for (Particle p : particles) {
-      p.update(position.copy());
+      p.applyForce(force);
+      p.update(position);
     }
   }
 
