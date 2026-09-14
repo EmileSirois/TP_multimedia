@@ -13,18 +13,21 @@ class Emitter {
     particles = new ArrayList<Particle>();
   }
 
-  void update(PVector force) {
+  void update(PVector force, Player player) {
+    
     if (millis() - lastParticleTime > particleRate && particles.size() < maxParticles) {
       lastParticleTime = millis();
       particles.add(new Particle(position));
     }
 
-    applyForce(force);
+    applyForce(force, player);
   }
   
- void applyForce(PVector force) {
+  void applyForce(PVector force, Player player) {
     for (Particle p : particles) {
-      p.applyForce(force);
+      PVector playerAttraction = p.attractForce(player);
+      PVector totalForce = force.copy().add(playerAttraction);
+      p.applyForce(totalForce);
       p.update(position);
     }
   }

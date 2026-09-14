@@ -5,6 +5,7 @@ class Particle {
   PVector emitterPosition;
   float lifespan;
   int mass;
+  boolean isAttracted = false;
 
   Particle() {
     initialize();
@@ -39,9 +40,30 @@ class Particle {
     acceleration.add(f);
   }
 
+  PVector attractForce(Player player) {
+    PVector force = player.position.copy().sub(position);
+    float distance = force.mag();
+
+    isAttracted = distance < player.attractionDistance;
+
+    if (!isAttracted) {
+      return new PVector(0, 0);
+    }
+
+    float G = 1000; // constante de force arbitraire
+    float strength = G * (player.mass * this.mass) / (distance * distance);
+    force.setMag(strength);
+
+    return force;
+  }
+
   void display() {
     stroke(0, lifespan);
-    fill(0, 0, 255, lifespan);
+    if (isAttracted) {
+      fill(255, 0, 0, lifespan); 
+    } else {
+      fill(0, 0, 255, lifespan);
+    }
     ellipse(position.x, position.y, 10, 10);
   }
 
@@ -54,5 +76,6 @@ class Particle {
     position.set (ep);
     velocity.set (random(-1, 1), random(-2, 0));    
     lifespan = 255;
+    isAttracted = false;
   }
 }
