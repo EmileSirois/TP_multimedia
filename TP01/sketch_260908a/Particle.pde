@@ -50,7 +50,7 @@ class Particle {
       return new PVector(0, 0);
     }
 
-    float G = 1000; // constante de force arbitraire
+    float G = 10000; // constante de force arbitraire
     float strength = G * (player.mass * this.mass) / (distance * distance);
     force.setMag(strength);
 

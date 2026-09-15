@@ -10,6 +10,7 @@ Player player;
 void setup() {
   size(800, 600);
   player = new Player (new PVector(0, 570));
+  player.setDistance(200);
   emitter = new Emitter (new PVector( width / 2, (height / 4)), 20, 400);
 }
 
@@ -28,11 +29,11 @@ void draw() {
     player.setVelo(new PVector(0, 0));
   }
   
-  update(deltaTime);
+  update();
   display();
 }
 
-void update(int deltaTime) {
+void update() {
   emitter.update(gravity, player);
   player.update();
 }
@@ -44,9 +45,5 @@ void display() {
 
   emitter.display();
   player.display();
-}
-
-void setDistance(int distance) {
-  player.setDistance(distance);
 }
   
