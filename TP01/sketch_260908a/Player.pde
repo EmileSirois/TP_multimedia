@@ -11,7 +11,7 @@ class Player {
     attractionDistance = baseAttDis;
   }
   
-  void changeAttractionDistance(int newDis){
+  void setDistance(int newDis){
     attractionDistance = newDis;
   }
   

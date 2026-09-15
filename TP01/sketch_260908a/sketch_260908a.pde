@@ -10,7 +10,7 @@ Player player;
 void setup() {
   size(800, 600);
   player = new Player (new PVector(0, 570));
-  emitter = new Emitter (new PVector( width / 2, (height / 4)*3), 20, 400);
+  emitter = new Emitter (new PVector( width / 2, (height / 4)), 20, 400);
 }
 
 void draw() {
@@ -47,6 +47,6 @@ void display() {
 }
 
 void setDistance(int distance) {
-  player.changeAttractionDistance(distance);
+  player.setDistance(distance);
 }
   
