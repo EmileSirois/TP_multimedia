@@ -145,6 +145,7 @@ sources/0 = SubResource("TileSetAtlasSource_4wyf3")
 [node name="World" type="Node2D" unique_id=141176153]
 
 [node name="Player" parent="." unique_id=1946044871 instance=ExtResource("1_nnsk1")]
+position = Vector2(-2, -14)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1127200800]
 
