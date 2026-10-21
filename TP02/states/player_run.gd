@@ -18,6 +18,8 @@ func handle_inputs(input_event: InputEvent) -> void :
 		Transitioned.emit(self, "Idle")
 	elif Input.is_action_just_pressed("Jump"):
 		Transitioned.emit(self, "Jump")
+	elif Input.is_action_just_pressed("Attack"):
+		Transitioned.emit(self, "Attack")
 
 
 func update(delta: float) -> void:

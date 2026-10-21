@@ -17,7 +17,10 @@ func _input(event: InputEvent) -> void:
 
 func handle_inputs(input_event: InputEvent) -> void :
 	direction = Input.get_axis("Left", "Right")
-
+	
+	if Input.is_action_just_pressed("Attack"):
+		Transitioned.emit(self, "Attack")
+	
 func update(delta: float) -> void:
 	if not anim_player :
 		anim_player = player.get_animation_player()
