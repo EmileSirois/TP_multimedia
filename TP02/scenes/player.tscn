@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://bj1d2pskcd3ep" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://dqsvww6jwd28f" path="res://scripts/state_machine.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://d3dlt5ss4n66q" path="res://states/player_idle.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://krn3wgxjboww" path="res://states/player_run.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://dwpqe3el46ahj" path="res://states/player_jump.gd" id="6_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(9, 18.5)
@@ -79,13 +81,18 @@ shape = SubResource("RectangleShape2D_4flbx")
 libraries/ = SubResource("AnimationLibrary_qlg0r")
 autoplay = &"idle"
 
-[node name="StateMachine" type="Node" parent="." unique_id=1869342711]
+[node name="StateMachine" type="Node" parent="." unique_id=1869342711 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_qhqgy")
+initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=266518950 node_paths=PackedStringArray("player")]
 script = ExtResource("4_dqkch")
 player = NodePath("../..")
 
-[node name="Run" type="Node" parent="StateMachine" unique_id=1514101510]
+[node name="Run" type="Node" parent="StateMachine" unique_id=1514101510 node_paths=PackedStringArray("player")]
+script = ExtResource("5_qlg0r")
+player = NodePath("../..")
 
-[node name="Jump" type="Node" parent="StateMachine" unique_id=41687461]
+[node name="Jump" type="Node" parent="StateMachine" unique_id=41687461 node_paths=PackedStringArray("player")]
+script = ExtResource("6_tuyoq")
+player = NodePath("../..")
